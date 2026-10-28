@@ -1,10 +1,10 @@
-import Markquue from "@/componantes/Markquue";
-import Image from "next/image";
+import Banner from "@/componantes/Banner";
+
 
 export default function Home() {
   return (
     <div>
-     <h2>home page</h2>
+     <Banner/>
 
     </div>
   );

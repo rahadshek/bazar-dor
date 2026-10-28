@@ -16,14 +16,15 @@ const Markquue = async () => {
   const heardline: IProduct[] = await res.json();
 
   return (
-    <div className="container mx-auto overflow-hidden">
+    <div className="border-b-2 border-b-gray-200 my-2 p-3" >
+    <div className="container mx-auto overflow-hidden ">
       <MarqueeText direction="right" duration={12}>
-        <div className="flex items-center gap-8 py-3 font-medium whitespace-nowrap">
+        <div className="flex items-center gap-8  font-medium whitespace-nowrap ">
           {heardline.slice(0, 10).map((line) => (
             <Link
               href={`/products/${line.slug}`}
               key={line.id}
-              className="transition-opacity hover:opacity-75"
+              className="transition-opacity hover:opacity-75  "
             >
               <span className="flex items-center gap-1">
                 <span>{line.categoryIcon}</span>
@@ -32,11 +33,11 @@ const Markquue = async () => {
 
                 <span>
                   {line.today.toLocaleString("bn-BD")} টাকা/
-                  {line.unit.toLocaleString("bn-BD")}
+                  {line.unit}
                 </span>
 
                 <span
-                  className={
+                  className={ 
                     line.change.dir === "up"
                       ? "text-red-500"
                       : line.change.dir === "down"
@@ -56,6 +57,7 @@ const Markquue = async () => {
           ))}
         </div>
       </MarqueeText>
+    </div>
     </div>
   );
 };

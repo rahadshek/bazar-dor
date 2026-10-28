@@ -2,18 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/logo-icon.png";
 import Navlinks from "./Navlinks";
-
-async function getBanglaDate() {
-  "use cache";
-
-  return new Date().toLocaleDateString("bn-BD", {
-    dateStyle: "full",
-  });
-}
+import BanglaDate from "./BanglaDate";
 
 const Navbar = async () => {
-  const banglaDate = await getBanglaDate();
-
   return (
     <header className="w-full bg-base-100 shadow-sm">
       {/* Main Navbar */}
@@ -77,10 +68,9 @@ const Navbar = async () => {
               >
                 বাজার দর
               </Link>
-
-              <p className="mt-1 max-w-full text-[10px] leading-4 text-base-content/70 sm:text-xs">
-                {banglaDate}
-              </p>
+              <span className="mt-1 max-w-full text-[10px] leading-4 text-base-content/70 sm:text-xs">
+                <BanglaDate />
+              </span>
             </div>
           </div>
 
