@@ -16,8 +16,7 @@ const Banner = () => {
             </div>
 
             <h1 className="max-w-xl text-3xl leading-tight font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
-              আজকের বাজারের দাম{" "}
-             এক নজরে
+              আজকের বাজারের দাম এক নজরে
             </h1>
 
             <p className="mt-5 max-w-xl text-sm leading-7 text-gray-600 sm:text-base">
