@@ -1,6 +1,6 @@
-import React from "react";
+
 import { IProducts } from "@/types/types";
-import Link from "next/link";
+
 
 const ProductsCard = ({ product }: { product: IProducts }) => {
   const unitBangla: Record<string, string> = {
@@ -11,7 +11,7 @@ const ProductsCard = ({ product }: { product: IProducts }) => {
   };
 
   return (
-    
+
       
         <div className="group h-full overflow-hidden rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-green-200 hover:shadow-xl hover:shadow-green-900/10 sm:p-5 motion-reduce:transition-none">
           {/* Product Info */}

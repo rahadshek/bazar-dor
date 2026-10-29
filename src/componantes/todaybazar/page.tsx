@@ -27,8 +27,11 @@ const TodayBazarPage = async () => {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
-          {bazarUpFilter.slice(0, 6).map((up) =>( <Link href={'/'} key={up.id} > <BazarUp  up={up} /></Link>
-            
+          {bazarUpFilter.slice(0, 6).map((up) => (
+            <Link href={`/details/${up.id}`} key={up.id}>
+              {" "}
+              <BazarUp up={up} />
+            </Link>
           ))}
         </div>
       </div>
@@ -37,7 +40,7 @@ const TodayBazarPage = async () => {
       <div>
         <div className="my-5 flex items-center gap-2 border-b border-green-100 pb-4 pt-4">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl text-lg font-bold text-green-600 sm:h-11 sm:w-11 sm:text-2xl">
-           ▼
+            ▼
           </span>
           <h2 className="text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl lg:text-3xl">
             আজ দাম কমেছে
@@ -46,8 +49,10 @@ const TodayBazarPage = async () => {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
-          {bazarDownFilter.slice(0, 6).map((down) => ( <Link href={'/'} key={down.id} ><BazarDown down={down} /></Link>
-            
+          {bazarDownFilter.slice(0, 6).map((down) => (
+            <Link href={`/details/${down.id}`} key={down.id}>
+              <BazarDown down={down} />
+            </Link>
           ))}
         </div>
       </div>

@@ -1,12 +1,15 @@
-import { INavlinks } from "@/types/types";
 
-import Link from "next/link";
+import { Suspense } from "react";
+import type { INavlinks } from "@/types/types";
+import NavlinksClient from "./NavlinksClient";
+
 
 const Navlinks = async () => {
   const res = await fetch(
     "https://openapi.programming-hero.com/api/bazardor/categories",
-    
-    { cache: "force-cache" },
+    {
+      cache: "force-cache",
+    },
   );
 
   if (!res.ok) {
@@ -14,24 +17,22 @@ const Navlinks = async () => {
   }
 
   const navs: INavlinks[] = await res.json();
-  console.log()
 
   return (
-    <div className="flex flex-col gap-1 font-semibold lg:flex-row lg:items-center lg:gap-6">
-      {navs.map((nav) => (
-        <Link
-          href={`/category/${nav.slug}`}
-          key={nav.id}
-          className="flex items-center gap-2 whitespace-nowrap rounded-lg px-3 py-2 text-sm transition-colors duration-200 hover:bg-[#05893e]/10 hover:text-[#05893e] lg:px-2"
-        >
-          <span className="text-lg" aria-hidden="true">
-            {nav.icon}
-          </span>
-
-          <span>{nav.nameBn}</span>
-        </Link>
-      ))}
-    </div>
+    <Suspense
+      fallback={
+        <div className="flex flex-col gap-2 lg:flex-row lg:gap-3">
+          {navs.map((nav) => (
+            <div
+              key={nav.id}
+              className="h-10 w-24 animate-pulse rounded-lg bg-gray-100"
+            />
+          ))}
+        </div>
+      }
+    >
+      <NavlinksClient navs={navs} />
+    </Suspense>
   );
 };
 

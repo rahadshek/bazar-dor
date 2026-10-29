@@ -3,64 +3,67 @@ import Link from "next/link";
 import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
 
-const Markquue = async () => {
+const Marquee = async () => {
   const res = await fetch(
     "https://openapi.programming-hero.com/api/bazardor/products",
-    { cache: "force-cache" },
+    {
+      next: { revalidate: 300 },
+    },
   );
 
   if (!res.ok) {
     throw new Error("Failed to fetch products");
   }
 
-  const heardline: IProduct[] = await res.json();
+  const products: IProduct[] = await res.json();
+
   const unitBangla: Record<string, string> = {
-    kg: "প্রতি কেজি",
-    litre: "প্রতি লিটার",
-    dozen: "প্রতি ডজন",
+    kg: "কেজি",
+    litre: "লিটার",
+    dozen: "ডজন",
     piece: "টি",
   };
 
   return (
-    <div className="border-b-2 border-b-gray-200 my-2 p-3">
-      <div className="container mx-auto overflow-hidden ">
-        <MarqueeText direction="right" duration={12}>
-          <div className="flex items-center gap-8  font-medium whitespace-nowrap ">
-            {heardline.slice(0, 10).map((line) => (
-              <Link
-                href={`/products/${line.slug}`}
-                key={line.id}
-                className="transition-opacity hover:opacity-75  "
-              >
-                <span className="flex items-center gap-1">
-                  <span>{line.categoryIcon}</span>
+    <div className="w-full border-b border-gray-200 bg-white px-3 py-2 shadow-sm sm:px-5">
+      <div className="container mx-auto overflow-hidden">
+        <MarqueeText direction="right" duration={20}>
+          <div className="flex items-center gap-6 whitespace-nowrap sm:gap-8">
+            {products.slice(0, 10).map((product) => {
+              const isUp = product.change.dir === "up";
+              const isDown = product.change.dir === "down";
 
-                  <span>{line.nameBn}</span>
+              const changeColor = isUp
+                ? "text-red-600"
+                : isDown
+                  ? "text-green-600"
+                  : "text-gray-500";
 
-                  <span>
-                    {line.today.toLocaleString("bn-BD")} টাকা/
-                    {unitBangla[line.unit] || line.unit}
+              return (
+                <Link
+                  key={product.id}
+                  href={`/details/${product.id}`}
+                  className="flex shrink-0 items-center gap-2 rounded-lg px-2 py-1 transition-opacity hover:opacity-70"
+                  aria-label={`${product.nameBn}, দাম ${product.today} টাকা`}
+                >
+                  <span>{product.categoryIcon}</span>
+
+                  <span className="text-sm font-semibold text-gray-800">
+                    {product.nameBn}
                   </span>
 
-                  <span
-                    className={
-                      line.change.dir === "up"
-                        ? "text-red-500"
-                        : line.change.dir === "down"
-                          ? "text-green-500"
-                          : "text-gray-500"
-                    }
-                  >
-                    {line.change.dir === "up"
-                      ? "▲"
-                      : line.change.dir === "down"
-                        ? "▼"
-                        : "◆"}{" "}
-                    {line.change.pct.toLocaleString("bn-BD")}%
+                  <span className="text-sm text-gray-600">
+                    ৳{product.today.toLocaleString("bn-BD")} /{" "}
+                    {unitBangla[product.unit] || product.unit}
                   </span>
-                </span>
-              </Link>
-            ))}
+
+                  <span className={`text-xs font-semibold ${changeColor}`}>
+                    {isUp ? "▲" : isDown ? "▼" : "◆"}{" "}
+                    {product.change.pct.toLocaleString("bn-BD")}%
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </MarqueeText>
       </div>
@@ -68,4 +71,4 @@ const Markquue = async () => {
   );
 };
 
-export default Markquue;
+export default Marquee;
