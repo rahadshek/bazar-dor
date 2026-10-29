@@ -1,9 +1,11 @@
 import { INavlinks } from "@/types/types";
+
 import Link from "next/link";
 
 const Navlinks = async () => {
   const res = await fetch(
     "https://openapi.programming-hero.com/api/bazardor/categories",
+    
     { cache: "force-cache" },
   );
 
@@ -12,12 +14,13 @@ const Navlinks = async () => {
   }
 
   const navs: INavlinks[] = await res.json();
+  console.log()
 
   return (
     <div className="flex flex-col gap-1 font-semibold lg:flex-row lg:items-center lg:gap-6">
       {navs.map((nav) => (
         <Link
-          href={`/categories/${nav.slug}`}
+          href={`/category/${nav.slug}`}
           key={nav.id}
           className="flex items-center gap-2 whitespace-nowrap rounded-lg px-3 py-2 text-sm transition-colors duration-200 hover:bg-[#05893e]/10 hover:text-[#05893e] lg:px-2"
         >

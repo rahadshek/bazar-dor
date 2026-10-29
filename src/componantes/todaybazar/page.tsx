@@ -27,8 +27,8 @@ const TodayBazarPage = async () => {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
-          {bazarUpFilter.slice(0, 6).map((up) => (
-            <BazarUp key={up.id} up={up} />
+          {bazarUpFilter.slice(0, 6).map((up) =>( <Link href={'/'} key={up.id} > <BazarUp  up={up} /></Link>
+            
           ))}
         </div>
       </div>
@@ -46,8 +46,8 @@ const TodayBazarPage = async () => {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
-          {bazarDownFilter.slice(0, 6).map((down) => (
-            <BazarDown key={down.id} down={down} />
+          {bazarDownFilter.slice(0, 6).map((down) => ( <Link href={'/'} key={down.id} ><BazarDown down={down} /></Link>
+            
           ))}
         </div>
       </div>

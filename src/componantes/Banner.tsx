@@ -26,7 +26,7 @@ const Banner = () => {
 
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <Link
-                href="/products"
+                href="/details"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#05893e] px-6 py-3 text-sm font-bold text-white shadow-md shadow-green-900/10 transition-all duration-300 hover:-translate-y-1 hover:bg-[#046f32] hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
               >
                 সব পণ্য দেখুন

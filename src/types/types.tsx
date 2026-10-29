@@ -23,6 +23,8 @@ export interface IProducts {
   slug: string;
   image: string;
   nameBn: string;
+  category: string;
+  categoryNameBn: string;
   categoryIcon: string;
   unit: string;
   today: number;

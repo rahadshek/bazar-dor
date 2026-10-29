@@ -12,7 +12,7 @@ const ProductsCard = ({ product }: { product: IProducts }) => {
 
   return (
     
-      <Link href={"/"}>
+      
         <div className="group h-full overflow-hidden rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-green-200 hover:shadow-xl hover:shadow-green-900/10 sm:p-5 motion-reduce:transition-none">
           {/* Product Info */}
           <div className="flex items-start gap-3">
@@ -107,7 +107,7 @@ const ProductsCard = ({ product }: { product: IProducts }) => {
             }
           />
         </div>
-      </Link>
+      
     
   );
 };
