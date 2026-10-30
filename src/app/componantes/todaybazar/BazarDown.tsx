@@ -1,8 +1,6 @@
-import {  IProducts } from "@/types/types";
-
+import { IProducts } from "@/types/types";
 
 const BazarDown = ({ down }: { down: IProducts }) => {
-
   const unitBangla: Record<string, string> = {
     kg: "প্রতি কেজি",
     litre: "প্রতি লিটার",
@@ -43,7 +41,6 @@ const BazarDown = ({ down }: { down: IProducts }) => {
             </p>
 
             <p className="inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-xs font-bold sm:text-sm bg-green-100 text-green-700">
-                  
               <span>{down.change.dir === "down" ? "▼" : ""}</span>
               {down.change.pct.toLocaleString("bn-BD")}%
             </p>

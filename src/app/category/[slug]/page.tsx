@@ -1,4 +1,3 @@
-
 import ProductsCard from "@/app/products/productsCard";
 import type { IProducts } from "@/types/types";
 import Link from "next/link";
@@ -15,9 +14,7 @@ interface ICategoryContentProps {
   }>;
 }
 
-const CategoryContent = async ({
-  params,
-}: ICategoryContentProps) => {
+const CategoryContent = async ({ params }: ICategoryContentProps) => {
   const { slug } = await params;
 
   const [res, res2] = await Promise.all([

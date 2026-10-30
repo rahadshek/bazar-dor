@@ -3,7 +3,7 @@ import { Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/componantes/(navbar)/Navbar";
 import { ToastContainer } from "react-toastify";
-import Footer from "@/componantes/Footer";
+import Footer from "@/app/componantes/Footer";
 
 const hindSiliguri = Hind_Siliguri({
   subsets: ["latin", "bengali"],

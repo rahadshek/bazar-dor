@@ -1,4 +1,4 @@
-import DetailsCard from "@/componantes/DetailsCard";
+import DetailsCard from "@/app/componantes/DetailsCard";
 import type { IProducts } from "@/types/types";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -34,14 +34,13 @@ const Page = async ({ params }: IParamsProps) => {
   return (
     <main className="min-h-screen bg-gray-50/70">
       <div className="container mx-auto max-w-7xl px-4 py-5 sm:px-6 sm:py-8 lg:px-8">
-        
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
           className="mb-6 overflow-hidden rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-sm sm:mb-8 sm:px-5"
         >
           <ol className="flex flex-wrap items-center gap-x-2 gap-y-2 text-sm sm:gap-x-3">
-            <li >
+            <li>
               <Link
                 href="/"
                 className="font-medium text-blue-500 transition-colors hover:text-green-700  "

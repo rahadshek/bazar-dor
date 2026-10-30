@@ -1,6 +1,6 @@
-import Banner from "@/componantes/Banner";
+import Banner from "@/app/componantes/Banner";
 import ProductsPage from "./products/page";
-import TodayBazarPage from "@/componantes/todaybazar/page";
+import TodayBazarPage from "@/app/componantes/todaybazar/page";
 
 export default function Home() {
   return (

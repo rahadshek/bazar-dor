@@ -3,7 +3,8 @@ import Image from "next/image";
 import logo from "@/assets/logo-icon.png";
 import Navlinks from "./Navlinks";
 import BanglaDate from "./BanglaDate";
-import Marquee from "../Markquue";
+import Marquee from "../../app/componantes/Markquue";
+import AuthData from "../../app/componantes/AuthData";
 
 const Navbar = () => {
   return (
@@ -77,22 +78,8 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Auth Buttons */}
-            <div className="navbar-end w-auto shrink-0 gap-1.5 sm:gap-3">
-              <Link
-                href="/sign-in"
-                className="btn btn-ghost btn-sm px-2 text-xs sm:btn-md sm:px-4 sm:text-sm"
-              >
-                সাইন ইন
-              </Link>
-
-              <Link
-                href="/sign-up"
-                className="btn btn-sm border-[#05893e] bg-[#05893e] px-2 text-xs text-white hover:border-[#047532] hover:bg-[#047532] sm:btn-md sm:px-4 sm:text-sm"
-              >
-                সাইন আপ
-              </Link>
-            </div>
+            {/* Auth Buttons & user data */}
+            <AuthData />
           </div>
         </div>
 

@@ -69,7 +69,7 @@ const SignIpPage = () => {
   };
 
   return (
-    <div className="container mx-auto flex  items-center justify-center px-4 py-8 sm:py-12">
+    <div className="container mx-auto flex flex-col items-center justify-center px-4 py-8 sm:py-12">
       <div className="flex w-full max-w-md flex-col items-center">
         {/* Heading */}
         <div className="my-5 space-y-2 text-center">
@@ -155,9 +155,7 @@ const SignIpPage = () => {
                 className="w-full bg-[#05893e] text-white"
                 isDisabled={isLoading}
               >
-                {isLoading
-                  ? "অ্যাকাউন্ট তৈরি হচ্ছে..."
-                  : "অ্যাকাউন্ট তৈরি করুন"}
+                {isLoading ? "সাইন ইন হচ্ছে..." : "সাইন ইন"}
               </Button>
             </div>
 
@@ -184,11 +182,17 @@ const SignIpPage = () => {
               href="/signup"
               className="font-semibold text-[#05893e] hover:underline"
             >
-              সাইন ইন করুন
+              সাইন আপ করুন{" "}
             </Link>
           </p>
         </div>
       </div>
+      <Link href={"/"} className="pt-6 text-[#717973]">
+        <span>
+          {" "}
+          <span>← </span>হোম পেজে ফিরে যান
+        </span>
+      </Link>
     </div>
   );
 };

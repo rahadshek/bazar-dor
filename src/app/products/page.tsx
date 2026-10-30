@@ -14,7 +14,7 @@ const ProductsPage = async () => {
     <section className="container mx-auto space-y-6 px-4 py-8 sm:py-10 lg:py-14">
       {/* Heading */}
       <div className="flex flex-col gap-3 border-b border-gray-100 pb-5 sm:flex-row sm:items-end sm:justify-between ">
-        <div className="space-y-3" >
+        <div className="space-y-3">
           <span className="inline-flex items-center gap-2 rounded-full bg-green-50 px-3 py-1.5 text-sm font-semibold text-green-700">
             <span className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
             বাজারদর তালিকা

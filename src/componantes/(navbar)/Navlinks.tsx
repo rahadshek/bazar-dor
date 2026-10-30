@@ -1,8 +1,6 @@
-
 import { Suspense } from "react";
 import type { INavlinks } from "@/types/types";
 import NavlinksClient from "./NavlinksClient";
-
 
 const Navlinks = async () => {
   const res = await fetch(

@@ -69,7 +69,7 @@ const SignUpPage = () => {
       if (user) {
         toast.success("সফলভাবে সাইন আপ হয়েছে!");
         // console.log(user);
-        router.push("/signin");
+        router.push("/sign-in");
       }
     } catch (error) {
       // console.error(error);
@@ -80,7 +80,7 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="container mx-auto flex items-center justify-center px-4 py-8 sm:py-12">
+    <div className="container mx-auto flex flex-col items-center justify-center px-4 py-3 sm:py-2">
       <div className="flex w-full max-w-md flex-col items-center">
         {/* Heading */}
         <div className="my-5 space-y-2 text-center">
@@ -269,6 +269,12 @@ const SignUpPage = () => {
           </p>
         </div>
       </div>
+       <Link href={"/"} className="pt-6 text-[#717973]">
+        <span>
+          {" "}
+          <span>← </span>হোম পেজে ফিরে যান
+        </span>
+      </Link>
     </div>
   );
 };
