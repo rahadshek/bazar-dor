@@ -16,15 +16,16 @@ import { toast } from "react-toastify";
 import { signUp } from "@/app/lib/auth-client";
 import { useState } from "react";
 import { Eye, EyeSlash } from "@gravity-ui/icons";
+import { useRouter } from "next/navigation";
 
 const SignUpPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isConfirmVisible, setIsConfirmVisible] = useState(false);
-
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
   const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
 
   const onSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -67,10 +68,11 @@ const SignUpPage = () => {
 
       if (user) {
         toast.success("সফলভাবে সাইন আপ হয়েছে!");
-        console.log(user);
+        // console.log(user);
+        router.push("/signin");
       }
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       toast.error("কিছু সমস্যা হয়েছে। আবার চেষ্টা করুন।");
     } finally {
       setIsLoading(false);
