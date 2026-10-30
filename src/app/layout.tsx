@@ -3,6 +3,7 @@ import { Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/componantes/(navbar)/Navbar";
 import { ToastContainer } from "react-toastify";
+import Footer from "@/componantes/Footer";
 
 const hindSiliguri = Hind_Siliguri({
   subsets: ["latin", "bengali"],
@@ -22,12 +23,13 @@ export default function RootLayout({
   return (
     <html
       lang="bn"
-      data-theme="light"
+      data-theme="mytheme"
       className={`${hindSiliguri.variable}  h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-hind">
         <Navbar />
         <main className="flex-1">{children}</main>
+        <Footer />
         <ToastContainer
           position="top-left"
           autoClose={3000}

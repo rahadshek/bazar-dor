@@ -25,7 +25,7 @@ const Marquee = async () => {
   };
 
   return (
-    <div className="w-full border-b border-gray-200 bg-white px-3 py-2 shadow-sm sm:px-5">
+    <div className="w-full border-b border-gray-200 bg-[#f0f5f0] px-3 py-2 shadow-sm sm:px-5">
       <div className="container mx-auto overflow-hidden">
         <MarqueeText direction="right" duration={20}>
           <div className="flex items-center gap-6 whitespace-nowrap sm:gap-8">

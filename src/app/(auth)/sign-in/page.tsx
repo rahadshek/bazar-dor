@@ -13,27 +13,17 @@ import {
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { toast } from "react-toastify";
-import { signUp } from "@/app/lib/auth-client";
+import { signIn } from "@/app/lib/auth-client";
 import { useState } from "react";
 import { Eye, EyeSlash } from "@gravity-ui/icons";
-import { useRouter } from "next/navigation";
 
-const SignUpPage = () => {
+const SignIpPage = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isConfirmVisible, setIsConfirmVisible] = useState(false);
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  const router = useRouter();
 
   const onSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (password !== confirmPassword) {
-      toast.error("পাসওয়ার্ড মিলছে না");
-      return;
-    }
 
     if (password.length < 8) {
       toast.error("পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে");
@@ -51,11 +41,11 @@ const SignUpPage = () => {
     try {
       setIsLoading(true);
 
-      const { data: user, error } = await signUp.email({
-        name: data.name,
+      const { data: user, error } = await signIn.email({
         email: data.email,
         password: data.password,
-        image: data.image || undefined,
+        rememberMe: true,
+        callbackURL: "/",
       });
 
       if (error) {
@@ -68,11 +58,10 @@ const SignUpPage = () => {
 
       if (user) {
         toast.success("সফলভাবে সাইন আপ হয়েছে!");
-        // console.log(user);
-        router.push("/signin");
+        console.log(user);
       }
     } catch (error) {
-      // console.error(error);
+      console.error(error);
       toast.error("কিছু সমস্যা হয়েছে। আবার চেষ্টা করুন।");
     } finally {
       setIsLoading(false);
@@ -80,16 +69,14 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="container mx-auto flex min-h-screen items-center justify-center px-4 py-8 sm:py-12">
+    <div className="container mx-auto flex  items-center justify-center px-4 py-8 sm:py-12">
       <div className="flex w-full max-w-md flex-col items-center">
         {/* Heading */}
         <div className="my-5 space-y-2 text-center">
-          <h1 className="text-2xl font-bold sm:text-3xl">
-            অ্যাকাউন্ট তৈরি করুন
-          </h1>
+          <h1 className="text-2xl font-bold sm:text-3xl">সাইন ইন</h1>
 
           <p className="text-sm text-gray-500">
-            বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।
+            বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।
           </p>
         </div>
 
@@ -100,22 +87,6 @@ const SignUpPage = () => {
             render={(props) => <form {...props} data-custom="foo" />}
             onSubmit={onSubmit}
           >
-            {/* Name */}
-            <TextField
-              isRequired
-              name="name"
-              validate={(value: string) => {
-                if (value.trim().length < 3) {
-                  return "নাম কমপক্ষে ৩ অক্ষরের হতে হবে।";
-                }
-                return null;
-              }}
-            >
-              <Label>নাম</Label>
-              <Input className="w-full" placeholder="যেমন: রহিম উদ্দিন" />
-              <FieldError />
-            </TextField>
-
             {/* Email */}
             <TextField
               isRequired
@@ -177,57 +148,6 @@ const SignUpPage = () => {
               <FieldError />
             </TextField>
 
-            {/* Confirm Password */}
-            <TextField
-              className="w-full"
-              name="confirmPassword"
-              validate={(value: string) => {
-                if (password.length < 8) {
-                  return null;
-                }
-
-                if (value !== password) {
-                  return "পাসওয়ার্ড মিলছে না";
-                }
-
-                return null;
-              }}
-            >
-              <Label>পাসওয়ার্ড নিশ্চিত করুন</Label>
-
-              <InputGroup>
-                <InputGroup.Input
-                  name="confirmPassword"
-                  className="w-full"
-                  type={isConfirmVisible ? "text" : "password"}
-                  placeholder="আবার লিখুন"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-
-                <InputGroup.Suffix className="pe-0">
-                  <Button
-                    type="button"
-                    isIconOnly
-                    aria-label={
-                      isConfirmVisible ? "Hide password" : "Show password"
-                    }
-                    size="sm"
-                    variant="ghost"
-                    onPress={() => setIsConfirmVisible(!isConfirmVisible)}
-                  >
-                    {isConfirmVisible ? (
-                      <Eye className="size-4" />
-                    ) : (
-                      <EyeSlash className="size-4" />
-                    )}
-                  </Button>
-                </InputGroup.Suffix>
-              </InputGroup>
-
-              <FieldError />
-            </TextField>
-
             {/* Submit Button */}
             <div className="flex w-full justify-center">
               <Button
@@ -261,7 +181,7 @@ const SignUpPage = () => {
           <p className="flex items-center justify-center gap-1 py-4 text-sm">
             অ্যাকাউন্ট আছে?
             <Link
-              href="/signin"
+              href="/signup"
               className="font-semibold text-[#05893e] hover:underline"
             >
               সাইন ইন করুন
@@ -273,4 +193,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default SignIpPage;

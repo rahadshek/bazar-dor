@@ -8,7 +8,7 @@ import Marquee from "../Markquue";
 const Navbar = () => {
   return (
     <div className="sticky top-0 z-50 w-full">
-      <header className="w-full bg-base-100 shadow-sm">
+      <header className="w-full border-b-2 border-b-gray-200 bg-base-100 shadow-sm">
         {/* Main Navbar */}
         <div className="mx-auto w-full max-w-7xl px-3 sm:px-5 lg:px-6">
           <div className="navbar min-h-20 gap-2 px-0">
@@ -87,7 +87,7 @@ const Navbar = () => {
               </Link>
 
               <Link
-                href="/signup"
+                href="/sign-up"
                 className="btn btn-sm border-[#05893e] bg-[#05893e] px-2 text-xs text-white hover:border-[#047532] hover:bg-[#047532] sm:btn-md sm:px-4 sm:text-sm"
               >
                 সাইন আপ

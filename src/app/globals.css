@@ -1,3 +1,17 @@
 @import "tailwindcss";
 @plugin "daisyui";
 @import "@heroui/styles"; 
+
+@plugin "daisyui/theme" {
+  name: "mytheme";
+  default: true;
+  color-scheme: light;
+
+  --color-base-100: #f0f5f0;
+  --color-base-200: #e5eee5;
+  --color-base-300: #d5e2d5;
+  --color-base-content: #1f2937;
+
+  --color-primary: #05893e;
+  --color-primary-content: #ffffff;
+}
