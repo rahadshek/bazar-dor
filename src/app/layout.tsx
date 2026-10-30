@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Hind_Siliguri } from "next/font/google";
-
 import "./globals.css";
 import Navbar from "@/componantes/(navbar)/Navbar";
-import Markquue from "@/componantes/Markquue";
+import { ToastContainer } from "react-toastify";
 
 const hindSiliguri = Hind_Siliguri({
   subsets: ["latin", "bengali"],
@@ -29,6 +28,12 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-hind">
         <Navbar />
         <main className="flex-1">{children}</main>
+        <ToastContainer
+          position="top-left"
+          autoClose={3000}
+          newestOnTop
+          style={{ top: "200px" }}
+        />
       </body>
     </html>
   );

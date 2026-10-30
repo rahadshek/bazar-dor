@@ -87,7 +87,7 @@ const Navbar = () => {
               </Link>
 
               <Link
-                href="/sign-up"
+                href="/signup"
                 className="btn btn-sm border-[#05893e] bg-[#05893e] px-2 text-xs text-white hover:border-[#047532] hover:bg-[#047532] sm:btn-md sm:px-4 sm:text-sm"
               >
                 সাইন আপ
