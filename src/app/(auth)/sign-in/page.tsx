@@ -30,13 +30,13 @@ const SignIpPage = () => {
       return;
     }
 
-    const formData = new FormData(e.currentTarget);
+  
+  const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries()) as {
+      email: string;
+      password: string;
+    };
 
-    const data: Record<string, string> = {};
-
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
-    });
 
     try {
       setIsLoading(true);

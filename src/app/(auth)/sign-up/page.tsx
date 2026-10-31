@@ -13,7 +13,7 @@ import {
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { toast } from "react-toastify";
-import { signUp } from "@/app/lib/auth-client";
+import { signIn, signUp } from "@/app/lib/auth-client";
 import { useState } from "react";
 import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { useRouter } from "next/navigation";
@@ -41,25 +41,22 @@ const SignUpPage = () => {
     }
 
     const formData = new FormData(e.currentTarget);
-
-    const data: Record<string, string> = {};
-
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
-    });
+    const data = Object.fromEntries(formData.entries()) as {
+      name: string;
+      email: string;
+      password: string;
+      image: string;
+    };
 
     try {
       setIsLoading(true);
 
       const { data: user, error } = await signUp.email({
-        name: data.name,
-        email: data.email,
-        password: data.password,
-        image: data.image || undefined,
+        ...data,
       });
 
       if (error) {
-        console.log(error);
+        // console.log(error);
         toast.error(
           error.message || "সাইন আপ করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।",
         );
@@ -68,14 +65,49 @@ const SignUpPage = () => {
 
       if (user) {
         toast.success("সফলভাবে সাইন আপ হয়েছে!");
-        // console.log(user);
-        router.push("/sign-in");
+        router.push("/");
       }
     } catch (error) {
       // console.error(error);
       toast.error("কিছু সমস্যা হয়েছে। আবার চেষ্টা করুন।");
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const GooglesignIn = async () => {
+    try {
+      const { error } = await signIn.social({
+        provider: "google",
+        callbackURL: "/",
+      });
+
+      if (error) {
+        toast.error(error.message || "গুগল দিয়ে সাইন ইন করতে সমস্যা হয়েছে।");
+        return;
+      }
+    } catch (error) {
+      // console.error(error);
+      toast.error("গুগল দিয়ে সাইন ইন করতে সমস্যা হয়েছে।");
+    }
+  };
+
+  const GitHubsignIn = async () => {
+    try {
+      const { error } = await signIn.social({
+        provider: "github",
+        callbackURL: "/",
+      });
+
+      if (error) {
+        toast.error(
+          error.message || "গিটহাব দিয়ে সাইন ইন করতে সমস্যা হয়েছে।",
+        );
+        return;
+      }
+    } catch (error) {
+      // console.error(error);
+      toast.error("গিটহাব দিয়ে সাইন ইন করতে সমস্যা হয়েছে।");
     }
   };
 
@@ -137,6 +169,7 @@ const SignUpPage = () => {
             <TextField
               className="w-full"
               name="password"
+              isRequired
               validate={(value: string) => {
                 if (value.length < 8) {
                   return "পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে";
@@ -181,6 +214,7 @@ const SignUpPage = () => {
             <TextField
               className="w-full"
               name="confirmPassword"
+              isRequired
               validate={(value: string) => {
                 if (password.length < 8) {
                   return null;
@@ -246,12 +280,20 @@ const SignUpPage = () => {
 
           {/* Social Login */}
           <div className="flex w-full flex-col gap-3 sm:flex-row">
-            <Button className="w-full" variant="tertiary">
+            <Button
+              onPress={GooglesignIn}
+              className="w-full"
+              variant="tertiary"
+            >
               <Icon icon="devicon:google" />
               Google দিয়ে চালিয়ে যান
             </Button>
 
-            <Button className="w-full" variant="tertiary">
+            <Button
+              onPress={GitHubsignIn}
+              className="w-full"
+              variant="tertiary"
+            >
               <Icon icon="mdi:github" />
               GitHub দিয়ে চালিয়ে যান
             </Button>
@@ -269,9 +311,9 @@ const SignUpPage = () => {
           </p>
         </div>
       </div>
-       <Link href={"/"} className="pt-6 text-[#717973]">
+
+      <Link href="/" className="pt-6 text-[#717973]">
         <span>
-          {" "}
           <span>← </span>হোম পেজে ফিরে যান
         </span>
       </Link>

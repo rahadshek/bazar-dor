@@ -1,25 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+
 import { useSession, signOut } from "../lib/auth-client";
 import { toast } from "react-toastify";
+import profile from "@/assets/profile.jpg";
 
 const AuthData = () => {
   const { data: session, isPending } = useSession();
 
+  // console.log("session console", session);
+
   const handleSignOut = async () => {
     try {
       const { error } = await signOut();
-
+      // console.log("error console", error);
       if (error) {
         toast.error("সাইন আউট করতে সমস্যা হয়েছে।");
         return;
       }
 
-      toast.success("সফলভাবে সাইন আউট হয়েছে!");
+      toast.error("সফলভাবে সাইন আউট হয়েছে!");
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       toast.error("কিছু সমস্যা হয়েছে। আবার চেষ্টা করুন।");
     }
   };
@@ -35,17 +38,16 @@ const AuthData = () => {
   return (
     <div className="navbar-end w-auto shrink-0 gap-1.5 sm:gap-3">
       {session?.user ? (
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex flex-col items-center gap-0.30 sm:gap-0.5">
           {/* User Image */}
-          {session.user.image && (
-            <Image
-              src={session.user?.image}
-              alt="User profile"
-              width={36}
-              height={36}
-              className="size-8 rounded-full object-cover sm:size-9"
-            />
-          )}
+          <div className="avatar">
+            <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
+              <img
+                alt="Tailwind-CSS-Avatar-component"
+                src={session.user?.image || profile.src}
+              />
+            </div>
+          </div>
 
           {/* User Name */}
           <span className="max-w-24 truncate text-xs font-semibold sm:max-w-36 sm:text-sm">
@@ -57,8 +59,8 @@ const AuthData = () => {
             onClick={handleSignOut}
             className="btn btn-ghost btn-sm px-2 text-xs text-red-500 sm:text-sm"
           >
-            <span>↩</span>
-            <span className="hidden sm:inline">সাইন আউট</span>
+            <span className="hidden sm:inline" >↩</span>
+            <span >সাইন আউট</span>
           </button>
         </div>
       ) : (
