@@ -30,13 +30,11 @@ const SignIpPage = () => {
       return;
     }
 
-  
-  const formData = new FormData(e.currentTarget);
+    const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries()) as {
       email: string;
       password: string;
     };
-
 
     try {
       setIsLoading(true);
@@ -65,6 +63,41 @@ const SignIpPage = () => {
       toast.error("কিছু সমস্যা হয়েছে। আবার চেষ্টা করুন।");
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const GooglesignIn = async () => {
+    try {
+      const { error } = await signIn.social({
+        provider: "google",
+        callbackURL: "/",
+      });
+
+      if (error) {
+        toast.error(error.message || "গুগল দিয়ে সাইন ইন করতে সমস্যা হয়েছে।");
+        return;
+      }
+    } catch (error) {
+      // console.error(error);
+      toast.error("গুগল দিয়ে সাইন ইন করতে সমস্যা হয়েছে।");
+    }
+  };
+
+  const GitHubsignIn = async () => {
+    try {
+      const { error } = await signIn.social({
+        provider: "github",
+        callbackURL: "/",
+      });
+      if (error) {
+        toast.error(
+          error.message || "গিটহাব দিয়ে সাইন ইন করতে সমস্যা হয়েছে।",
+        );
+        return;
+      }
+    } catch (error) {
+      // console.error(error);
+      toast.error("গিটহাব দিয়ে সাইন ইন করতে সমস্যা হয়েছে।");
     }
   };
 
@@ -164,12 +197,20 @@ const SignIpPage = () => {
 
           {/* Social Login */}
           <div className="flex w-full flex-col gap-3 sm:flex-row">
-            <Button className="w-full" variant="tertiary">
+            <Button
+              className="w-full"
+              variant="tertiary"
+              onClick={GooglesignIn}
+            >
               <Icon icon="devicon:google" />
               Google দিয়ে চালিয়ে যান
             </Button>
 
-            <Button className="w-full" variant="tertiary">
+            <Button
+              className="w-full"
+              variant="tertiary"
+              onClick={GitHubsignIn}
+            >
               <Icon icon="mdi:github" />
               GitHub দিয়ে চালিয়ে যান
             </Button>

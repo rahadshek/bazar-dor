@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -97,31 +96,26 @@ const ProfilePage = () => {
 
   return (
     <main className="container mx-auto min-h-screen px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-
       {/* Page Heading */}
-      <div className="mb-8 sm:mb-10">
+      <div className=" mx-auto max-w-4xl  mb-8 sm:mb-10">
         <h1 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
           আমার প্রোফাইল
         </h1>
 
         <p className="mt-2 text-sm text-base-content/60 sm:text-base">
-          আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন এবং আপডেট করুন।
+          আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।
         </p>
       </div>
 
       <div className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
-
         {/* User Information Card */}
         <div className="rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm transition hover:shadow-md sm:p-6">
-
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-
             {/* User Information */}
             <div className="flex min-w-0 items-center gap-4">
-
               <div className="shrink-0">
                 <img
-                  src={session.user.image || profile.src}
+                  src={session.user?.image || profile.src}
                   alt="User Profile"
                   className="size-16 rounded-full border-2 border-primary object-cover sm:size-20"
                 />
@@ -151,37 +145,25 @@ const ProfilePage = () => {
             >
               <CgLogOut className="text-xl" />
 
-              <span>
-                {isSigningOut ? "সাইন আউট হচ্ছে..." : "সাইন আউট"}
-              </span>
+              <span>{isSigningOut ? "সাইন আউট হচ্ছে..." : "সাইন আউট"}</span>
             </button>
-
           </div>
         </div>
 
         {/* Update Profile Card */}
         <div className="rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm transition hover:shadow-md sm:p-7 md:p-8">
-
           {/* Heading */}
           <div className="mb-7">
-            <h2 className="text-xl font-bold sm:text-2xl">
-              তথ্য আপডেট করুন
-            </h2>
-
-            <p className="mt-2 text-sm text-base-content/60 sm:text-base">
-              আপনার ব্যক্তিগত তথ্য পরিবর্তন করুন।
-            </p>
+            <h2 className="text-xl font-bold sm:text-2xl">তথ্য </h2>
           </div>
 
           {/* Update Form */}
           <Form className="w-full" onSubmit={onSubmit}>
             <Fieldset className="w-full">
               <FieldGroup>
-
                 <TextField
                   isRequired
                   name="name"
-                  defaultValue={session.user.name}
                   validate={(value) => {
                     if (value.trim().length < 3) {
                       return "Name must be at least 3 characters";
@@ -194,14 +176,10 @@ const ProfilePage = () => {
                     নাম
                   </Label>
 
-                  <Input
-                    placeholder="আপনার নাম লিখুন"
-                    className="w-full"
-                  />
+                  <Input placeholder="আপনার নাম লিখুন" className="w-full" />
 
                   <FieldError />
                 </TextField>
-
               </FieldGroup>
 
               {/* Submit Button */}
@@ -214,11 +192,9 @@ const ProfilePage = () => {
                   {isUpdating ? "আপডেট হচ্ছে..." : "আপডেট করুন"}
                 </button>
               </Fieldset.Actions>
-
             </Fieldset>
           </Form>
         </div>
-
       </div>
     </main>
   );

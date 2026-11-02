@@ -10,6 +10,9 @@ import { ChevronDown } from "@gravity-ui/icons";
 
 const AuthData = () => {
   const { data: session, isPending } = useSession();
+  // console.log('get session data',session)
+  // console.log('get session image',session?.user.image)
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSignOut = async () => {
@@ -43,7 +46,7 @@ const AuthData = () => {
           {/* User Avatar */}
           <div className="size-9 shrink-0 overflow-hidden rounded-full ring-2 ring-primary ring-offset-2 ring-offset-base-100 sm:size-10">
             <img
-              src={session.user?.image || profile.src}
+              src={session.user.image || profile.src}
               alt="User Profile"
               className="h-full w-full object-cover"
             />
@@ -79,9 +82,12 @@ const AuthData = () => {
               {/* User Information */}
               <div className="flex items-center gap-3 border-b border-base-300 px-2 pb-4">
                 <img
-                  src={session.user?.image || profile.src}
+                  src={session.user.image || profile.src}
                   alt="User Profile"
-                  className="size-11 shrink-0 rounded-full border-2 border-primary object-cover"
+                  onError={(e) => {
+                    e.currentTarget.src = profile.src;
+                  }}
+                  className="size-16 rounded-full border-2 border-primary object-cover"
                 />
 
                 <div className="min-w-0 flex-1">

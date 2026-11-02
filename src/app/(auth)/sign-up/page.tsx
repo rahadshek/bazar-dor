@@ -18,6 +18,7 @@ import { useState } from "react";
 import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { useRouter } from "next/navigation";
 
+
 const SignUpPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isConfirmVisible, setIsConfirmVisible] = useState(false);
@@ -98,7 +99,6 @@ const SignUpPage = () => {
         provider: "github",
         callbackURL: "/",
       });
-
       if (error) {
         toast.error(
           error.message || "গিটহাব দিয়ে সাইন ইন করতে সমস্যা হয়েছে।",
