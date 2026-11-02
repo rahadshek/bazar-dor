@@ -3,8 +3,8 @@ import Image from "next/image";
 import logo from "@/assets/logo-icon.png";
 import Navlinks from "./Navlinks";
 import BanglaDate from "./BanglaDate";
-import Marquee from "../../app/componantes/Markquue";
-import AuthData from "../../app/componantes/AuthData";
+import Marquee from "../Markquue";
+import AuthData from "../AuthData";
 
 const Navbar = () => {
   return (

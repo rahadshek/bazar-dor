@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import banner from "@/assets/bazar-hero.png";
-import BanglaDate from "../../componantes/(navbar)/BanglaDate";
+import BanglaDate from "./(navbar)/BanglaDate";
+
 
 const Banner = () => {
   return (

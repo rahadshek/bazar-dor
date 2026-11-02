@@ -1,6 +1,6 @@
-
 import type { IProducts } from "@/types/types";
 import ProductsClient from "./ProductsClient";
+import { notFound } from "next/navigation";
 
 interface ICategory {
   icon: string;
@@ -29,13 +29,11 @@ const CategoryContent = async ({ params }: ICategoryContentProps) => {
   ]);
 
   if (!res.ok || !res2.ok) {
-    throw new Error("Failed to fetch category data");
+    notFound();
   }
 
   const products: IProducts[] = await res.json();
   const category: ICategory = await res2.json();
-
- 
 
   return <ProductsClient products={products} category={category} />;
 };

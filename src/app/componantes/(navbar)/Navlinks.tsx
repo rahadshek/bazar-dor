@@ -19,12 +19,18 @@ const Navlinks = async () => {
   return (
     <Suspense
       fallback={
-        <div className="flex flex-col gap-2 lg:flex-row lg:gap-3">
+        <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-3">
           {navs.map((nav) => (
             <div
               key={nav.id}
-              className="h-10 w-24 animate-pulse rounded-lg bg-gray-100"
-            />
+              className="group flex h-10 w-full items-center gap-3 rounded-xl border border-gray-100 bg-white px-3 shadow-sm lg:w-28"
+            >
+              {/* Icon Skeleton */}
+              <div className="size-5 shrink-0 animate-pulse rounded-md bg-green-100" />
+
+              {/* Text Skeleton */}
+              <div className="h-3 w-14 animate-pulse rounded-full bg-gray-200" />
+            </div>
           ))}
         </div>
       }

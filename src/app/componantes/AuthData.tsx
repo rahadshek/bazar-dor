@@ -34,7 +34,7 @@ const AuthData = () => {
   if (isPending) {
     return (
       <div className="navbar-end w-auto shrink-0">
-        <span className="loading loading-spinner loading-sm"></span>
+        <span className="loading loading-spinner loading-sm text-green-600"></span>
       </div>
     );
   }

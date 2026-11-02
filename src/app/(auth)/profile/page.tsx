@@ -12,7 +12,7 @@ import {
 } from "@heroui/react";
 import profile from "@/assets/profile.jpg";
 import { CgLogOut } from "react-icons/cg";
-import { useSession, signOut, authClient } from "../lib/auth-client";
+import { useSession, signOut, authClient } from "../../lib/auth-client";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
 // import { useRouter } from "next/navigation";
@@ -67,7 +67,7 @@ const ProfilePage = () => {
       }
 
       toast.error("সফলভাবে সাইন আউট হয়েছে!");
-      redirect('/sign-in')
+      redirect("/sign-in");
       // router.replace("/sign-in");
       // router.refresh();
     } catch {

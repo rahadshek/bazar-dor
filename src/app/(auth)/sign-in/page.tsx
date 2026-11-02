@@ -220,7 +220,7 @@ const SignIpPage = () => {
           <p className="flex items-center justify-center gap-1 py-4 text-sm">
             অ্যাকাউন্ট আছে?
             <Link
-              href="/signup"
+              href="/sign-up"
               className="font-semibold text-[#05893e] hover:underline"
             >
               সাইন আপ করুন{" "}

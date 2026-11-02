@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Hind_Siliguri } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/componantes/(navbar)/Navbar";
+
 import { ToastContainer } from "react-toastify";
 import Footer from "@/app/componantes/Footer";
+import Navbar from "./componantes/(navbar)/Navbar";
 
 const hindSiliguri = Hind_Siliguri({
   subsets: ["latin", "bengali"],

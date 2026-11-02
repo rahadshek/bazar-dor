@@ -1,4 +1,4 @@
-const Loading = () => {
+const DetailsLoading = () => {
   return (
     <div className="flex min-h-[60vh] w-full flex-col items-center justify-center gap-5 px-4">
       {/* Animated Spinner */}
@@ -27,4 +27,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default DetailsLoading;
