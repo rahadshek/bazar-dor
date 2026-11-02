@@ -1,36 +1,168 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 Bazar-Dor
 
-## Getting Started
+**Bazar-Dor** is a Bangla-based grocery price tracking application designed to help users explore daily essential product prices in Bangladesh. It provides an easy way to browse products, explore categories, compare prices, and stay informed about market updates through a clean and responsive interface.
 
-First, run the development server:
+## ✨ Features
+
+- **Daily Market Updates:** Explore today's market prices and price updates for essential products.
+- **Product Browsing:** Browse a collection of grocery and daily essential products.
+- **Category Filtering:** Explore products by category for easier navigation.
+- **Price Sorting:** Sort products from low to high or high to low.
+- **Product Details:** View detailed information about individual products.
+- **User Authentication:** Register and sign in using email and password, Google, or GitHub.
+- **User Profile:** View profile information and update your account name.
+- **Protected Routes:** Restrict access to selected pages for authenticated users.
+- **Responsive Design:** Optimized layouts for mobile, tablet, and desktop devices.
+- **Loading & Notifications:** User-friendly loading states and toast notifications.
+
+## 🛠️ Technologies Used
+
+| Technology         | Purpose                               |
+| ------------------ | ------------------------------------- |
+| Next.js 16         | React framework and App Router        |
+| React 19           | Building user interfaces              |
+| TypeScript         | Type safety                           |
+| Tailwind CSS 4     | Styling and responsive design         |
+| DaisyUI 5          | UI components                         |
+| HeroUI             | Form and interface components         |
+| Better Auth        | Authentication and session management |
+| MongoDB            | Database                              |
+| React Icons        | Icons                                 |
+| React Toastify     | Toast notifications                   |
+| React Marquee Text | Scrolling market updates              |
+
+## 🚀 Getting Started
+
+Follow these steps to run the project locally.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/rahadshek/bazar-dor.git
+```
+
+### 2. Navigate to the Project Directory
+
+```bash
+cd bazar-dor
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Configure Environment Variables
+
+Create a `.env.local` file in the root directory and configure the required environment variables.
+
+````env
+# Database
+MONGOBD_URL=your_mongodb_connection_string
+
+# Better Auth
+BETTER_AUTH_SECRET=
+BETTER_AUTH_URL=
+
+# Google OAuth
+GOOGLE_CLIENT_ID=
+GOOGLE_SECRET=
+
+# GitHub OAuth
+GITHUB_CLIENT_ID=
+GITHUB_SECRET=
+
+
+**Important:** Never commit your `.env.local` file or expose your database credentials and OAuth secrets publicly.
+
+Make sure your environment variable names match the ones used in your project configuration.
+
+### 5. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+````
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 📦 Available Scripts
+
+| Command         | Description                          |
+| --------------- | ------------------------------------ |
+| `npm run dev`   | Start the development server         |
+| `npm run build` | Build the application for production |
+| `npm run start` | Start the production server          |
+| `npm run lint`  | Run ESLint                           |
+
+## 📁 Project Structure
+
+```text
+bazar-dor/
+├── public/                 # Static assets
+├── src/
+│   └── app/
+│       ├── (auth)/         # Authentication pages
+│       ├── componantes/    # Shared UI components
+│       ├── products/       # Product listing pages
+│       ├── category/       # Category pages
+│       ├── details/        # Product details
+│       ├── profile/        # User profile pages
+│       ├── lib/            # Authentication and utilities
+│       ├── layout.tsx      # Root layout
+│       └── page.tsx        # Home page
+├── .gitignore
+├── next.config.ts
+├── package.json
+├── tsconfig.json
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+_Note: This is a simplified overview of the project structure._
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔐 Authentication
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Bazar-Dor uses **Better Auth** with MongoDB for authentication and session management.
 
-## Learn More
+Supported authentication methods:
 
-To learn more about Next.js, take a look at the following resources:
+- Email and password
+- Google OAuth
+- GitHub OAuth
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Some application pages require users to sign in before accessing them.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🌐 API
 
-## Deploy on Vercel
+Product and category information is retrieved from the Bazar-Dor API.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Base API URL:**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+https://openapi.programming-hero.com/api/bazardor
+```
+
+## 🚀 Deployment
+
+The application can be deployed using [Vercel](https://vercel.com/).
+
+Before deployment:
+
+1. Push your project to GitHub.
+2. Import the repository into Vercel.
+3. Configure the required environment variables.
+4. Add the production URL to your Better Auth and OAuth configuration.
+5. Deploy the application.
+
+## 👨‍💻 Author
+
+**Rahad Shek**
+
+- GitHub: [@rahadshek](https://github.com/rahadshek)
+- Repository: [Bazar-Dor](https://github.com/rahadshek/bazar-dor)
+
+---
+
+⭐ If you find this project useful, consider giving it a star!
+
+**Built with 💚 for a smarter grocery shopping experience.**
