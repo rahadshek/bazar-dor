@@ -69,8 +69,7 @@ const AuthData = () => {
             className="rounded-full p-1.5 transition hover:bg-base-200"
           >
             <ChevronDown
-              size={19}
-              className={`transition-transform duration-200 ${
+              className={` "size-5 text-gray-500" transition-transform duration-200 ${
                 isOpen ? "rotate-180" : ""
               }`}
             />

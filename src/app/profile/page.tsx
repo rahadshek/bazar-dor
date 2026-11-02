@@ -14,11 +14,12 @@ import profile from "@/assets/profile.jpg";
 import { CgLogOut } from "react-icons/cg";
 import { useSession, signOut, authClient } from "../lib/auth-client";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 const ProfilePage = () => {
   const { data: session, isPending } = useSession();
-  const router = useRouter();
+  // const router = useRouter();
 
   const [isUpdating, setIsUpdating] = useState(false);
   const [isSigningOut, setIsSigningOut] = useState(false);
@@ -65,9 +66,10 @@ const ProfilePage = () => {
         return;
       }
 
-      toast.success("সফলভাবে সাইন আউট হয়েছে!");
-      router.push("/");
-      router.refresh();
+      toast.error("সফলভাবে সাইন আউট হয়েছে!");
+      redirect('/sign-in')
+      // router.replace("/sign-in");
+      // router.refresh();
     } catch {
       toast.error("কিছু সমস্যা হয়েছে। আবার চেষ্টা করুন।");
     } finally {
@@ -86,7 +88,7 @@ const ProfilePage = () => {
 
   // Session Check
   if (!session) {
-    router.replace("/sign-in");
+    // router.replace("/sign-in");
     return (
       <div className="flex min-h-[70vh] items-center justify-center">
         <span className="loading loading-spinner loading-lg text-primary" />
