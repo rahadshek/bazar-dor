@@ -6,7 +6,7 @@ const getProduct = async (): Promise<IProducts[]> => {
   const res = await fetch(
     "https://openapi.programming-hero.com/api/bazardor/products",
     {
-      cache: "force-cache",
+      cache: "no-cache",
     },
   );
   if (!res.ok) {
